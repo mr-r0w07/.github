@@ -1,7 +1,12 @@
 name: Gitleaks Scan
 on:
   pull_request:
-
+  
+permissions:
+  contents: read
+  pull-requests: read
+  security-events: write
+  
 jobs:
   gitleaks-scan:
     name: Run Gitleaks
@@ -13,4 +18,3 @@ jobs:
         with:
           repository: ${{ github.event.pull_request.head.repo.full_name }}
           ref: ${{ github.event.pull_request.head.ref }}
-          github_token: ${{ secrets.GITHUB_TOKEN }}
